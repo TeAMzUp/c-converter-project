@@ -9,7 +9,7 @@ int outputMode = 0; // output format
 int number = 0; // To convert
 char hexaStr[] = "ffffff\0"; // default hexa string
 
-//restart loop function
+//Restart loop function
 void restartMe()
 {
     char quitStr[] = "Hello\0"; // User answer
@@ -36,7 +36,7 @@ int decToBin()
     return number / 2;
 }
 
-// Main function
+//Main function
 int main()
 {
     inputMode = 0;
@@ -55,7 +55,7 @@ int main()
     if ((inputMode != 2 && inputMode != 8 && inputMode != 10 && inputMode != 16) || (outputMode != 2 && outputMode != 8 && outputMode != 10 && outputMode != 16))
     {
         printf("Please enter valid formats: 2, 8, 10, or 16.\n");
-        char quitStr[4]; // = "Hello"; // User answer
+        char quitStr[4]; // = "Hello"; // See below
         scanf("%[^\n]", &quitStr); //Prevents infinite loop in case of invalid (or space using) character.
         printf("\n");
         //printf("\n%s\n", quitStr); // displaying failure typing before going back to main for debug
