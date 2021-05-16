@@ -14,7 +14,7 @@ void restartMe()
 {
     char quitStr[] = "Hello\0"; // User answer
     printf("\n");
-    printf("\nType Yes to start over...\n");
+    printf("\nType 'Yes' to start over...\n");
     scanf(" %[^\n]", &quitStr); // important space in scanf() here
 
     if ((quitStr[0] == 'Y' || quitStr[0] == 'y') && (quitStr[1] == 'E' || quitStr[1] == 'e') && (quitStr[2] == 'S' || quitStr[2] == 's') && quitStr[3] == '\0')
@@ -52,6 +52,7 @@ int main()
     printf("Now choose output format: \n");
     scanf(" %d", &outputMode);
 
+    //Returning to main() for easy testing purpose
     if ((inputMode != 2 && inputMode != 8 && inputMode != 10 && inputMode != 16) || (outputMode != 2 && outputMode != 8 && outputMode != 10 && outputMode != 16))
     {
         printf("Please enter valid formats: 2, 8, 10, or 16.\n");
