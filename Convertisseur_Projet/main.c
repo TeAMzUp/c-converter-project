@@ -14,7 +14,7 @@ void restartMe()
 {
     char quitStr[] = "Hello\0"; // User answer
     printf("\n");
-    printf("\nType 'Yes' to start over...\n");
+    printf("\nType 'Yes' to start over, anything else to quit...\n");
     scanf(" %[^\n]", &quitStr); // important space in scanf() here
 
     if ((quitStr[0] == 'Y' || quitStr[0] == 'y') && (quitStr[1] == 'E' || quitStr[1] == 'e') && (quitStr[2] == 'S' || quitStr[2] == 's') && quitStr[3] == '\0')
@@ -30,11 +30,56 @@ void restartMe()
 }
 
 //Decimal to binary calc
-int decToBin()
+void decToBin (int number, int resultTab [])
 {
-    //Test
-    return number / 2;
+    //loop
+    int i = 0;
+    //int N = (number/2);
+    for (i = 0; number > 0; i++)
+    {
+        resultTab[i] = number%2;
+        number = number/2;
+    }
+
+    for(i=i-1;i>=0;i--)
+    {
+        printf("%d", resultTab[i]);
+    }
 }
+
+////String length
+//int strLength (char str [])
+//{
+//    int i = 0;
+//    for (i = 0; str[i] != '\0'; i++)
+//    {
+//
+//    }
+//    return i;
+//}
+//
+////Displaying any string
+//void displayStr (char str [])
+//{
+//    int i = 0;
+//    for (i = 0; i < strLength(str); i++)
+//    {
+//        printf("%c", str[i]);
+//    }
+//}
+//
+////String reverse
+//void strReverse (char str [], char newStr [])
+//{
+//    int i =0;
+//    int j = strLength(newStr)-1;
+//
+//    for (i = 0; str[i] != '\0'; i++)
+//    {
+//        newStr[j] = str[i];
+//        j--;
+//    }
+//}
 
 //Main function
 int main()
@@ -73,18 +118,29 @@ int main()
                 //
                 //switching output mode for calc
                 break;
+
             case 8:
                 printf("Enter number to convert: \n");
                 //
                 //switching output mode for calc
                 break;
+
             case 10:
                 printf("Enter number to convert: \n");
                 scanf(" %d", &number);
                 //switching output mode for calc
-                printf("Result: %d", decToBin(number));
+                int tabRes[100];
+                int tabInv[100];
+                //tabReverse(strRes, tabResInv); // reverse
+                printf("Result: ");
+                decToBin(number, tabRes); // calc
+
+                //Fixing incorrect input again, and asking to restart
+                char quitStr[4];
+                scanf("%[^\n]", &quitStr);
                 restartMe();
                 break; // return in restartMe() function, but will trigger next printf() if there's no break
+
             case 16:
                 printf("Enter number to convert: \n");
                 //scanf(" %s", &hexaStr);
