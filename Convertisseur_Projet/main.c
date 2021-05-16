@@ -12,7 +12,7 @@ char hexaStr[] = "ffffff\0"; // default hexa string
 //restart loop function
 void restartMe()
 {
-    char quitStr[] = "Hello"; // User answer
+    char quitStr[] = "Hello\0"; // User answer
     printf("\n");
     printf("\nType Yes to start over...\n");
     scanf(" %[^\n]", &quitStr); // important space in scanf() here
