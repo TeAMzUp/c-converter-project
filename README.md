@@ -1,3 +1,3 @@
 # C - Converter Project
 
-Training project
+Training project only - No licence at all - Contact via GitLab if you have any question.
