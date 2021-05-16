@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1621042752 source:e:\callac_csc_dev\prog\convertisseur_projet\main.c
+	<stdio.h>
+	<stdlib.h>
+
