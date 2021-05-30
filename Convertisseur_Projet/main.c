@@ -121,13 +121,26 @@ int binToDec (int number)
 }
 
 //From octal to decimal
-void octoToDec(int number)
+int octoToDec(int number)
 {
-
+    //Setting base and other vars
+    int dec = 0;
+    int i = 0; // i will be powered with 8, this time
+    int rest = 0;
+    int puiss = 1;
+    //loop
+    for (i = 0; number > 0; i++)
+    {
+        rest = number % 10;
+        number = number/10;
+        dec = dec + rest*puiss;
+        puiss = puiss*8;
+    }
+    return dec;
 }
 
 //From hexadecimal to decimal
-void hexaToDec(int number)
+int hexaToDec(int number)
 {
 
 }
@@ -235,8 +248,8 @@ int main()
                 printf("Enter number to convert: \n");
                 scanf(" %d", &number);
                 printf("Result: ");
-                int decR3 = binToDec(number);
-                decToOcto(decR3); // calc & display
+                int decR = binToDec(number);
+                decToOcto(decR); // calc & display
 
                 //Asking to restart
                 char quitStr[4];
@@ -274,7 +287,10 @@ int main()
             if (outputMode == 2)
             {
                 printf("Enter number to convert: \n");
-                //ToBeDone
+                scanf(" %d", &number);
+                int decR3 = octoToDec(number);
+                printf("Result: ");
+                decToBin(decR3); // calc & display
 
                 //Asking to restart
                 char quitStr[4];
@@ -291,7 +307,9 @@ int main()
             else if (outputMode == 10)
             {
                 printf("Enter number to convert: \n");
-                //ToBeDone
+                scanf(" %d", &number);
+                int decR4 = octoToDec(number);
+                printf("Result: %d", octoToDec(decR4)); // display & calc
 
                 //Asking to restart
                 char quitStr[4];
@@ -301,7 +319,10 @@ int main()
             else if (outputMode == 16)
             {
                 printf("Enter number to convert: \n");
-                //ToBeDone
+                scanf(" %d", &number);
+                int decR5 = octoToDec(number);
+                printf("Result: ");
+                decToHexa(decR5); // calc & display
 
                 //Asking to restart
                 char quitStr[4];
