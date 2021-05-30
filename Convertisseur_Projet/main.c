@@ -187,19 +187,27 @@ int main()
                 printf("You entered twice the same format.\n");
 
                 //Offer binary operations, let' start with adding 2 binary numbers
-                int number1;
-                int number2;
+                int number1 = 0;
+                int number2 = 0;
                 printf("Enter first binary: \n");
                 scanf(" %d", &number1);
+
+                char quitStr1[4]; // = "Hello"; // See below
+                scanf("%[^\n]", &quitStr1); //Prevents invalid (or space using) user input
+
                 printf("Enter second binary number to add: \n");
                 scanf(" %d", &number2);
+
+                char quitStr2[4]; // = "Hello"; // See below
+                scanf("%[^\n]", &quitStr2); //Prevents invalid (or space using) user input
+
                 int x1 = binToDec(number1);
                 int x2 = binToDec(number2);
                 int x3 = x1+x2;
                 printf("Result: ");
                 decToBin(x3); // calc & display
 
-                //Asking to restart while fixing incorrect input again (user input number)
+                //Asking to restart while fixing incorrect input again (user input numbers)
                 char quitStr[4];
                 scanf("%[^\n]", &quitStr);
                 restartMe();
