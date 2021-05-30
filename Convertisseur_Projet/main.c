@@ -11,7 +11,7 @@ int inputMode = 0; // input format
 int outputMode = 0; // output format
 
 int number = 0; // To convert
-char hexaStr[] = "ffffff\0"; // default hexa string
+//char hexaStr[] = "ffffff\0"; // default hexa string
 
 //Restart loop function
 void restartMe()
@@ -48,9 +48,9 @@ void decToBin (int number)
         number = number/2;
     }
 
-    for(i=i-1;i>=0;i--)
+    for(int j=i-1; j>=0; j--)
     {
-        printf("%d", resultTab[i]);
+        printf("%d", resultTab[j]);
     }
 }
 
@@ -66,10 +66,38 @@ void decToOcto (int number)
         number = number/8;
     }
 
-    for(i=i-1;i>=0;i--)
+    for(int j=i-1; j>=0; j--)
     {
-        printf("%d", resultTab[i]);
+        printf("%d", resultTab[j]);
     }
+}
+
+//Decimal to Hexa
+void decToHexa (int number)
+{
+    int res = 0; // rest of modulo
+    int i = 0, j = 0;
+    char hexanum[] = "f\0"; // Tab to display result
+
+    while (number != 0)
+    {
+        res = number % 16;
+        if (res < 10)
+        {
+            hexanum[j] = 48 + res; // Using Ascii table
+            j++;
+        }
+        else
+        {
+            hexanum[j] = 55 + res; // Using Ascii while res == 11 gives A
+            j++;
+        }
+        number = number / 16;
+    }
+
+    //Displaying integer into char
+    for (i = j-1; i >= 0; i--)
+        printf("%c", hexanum[i]);
 }
 
 //Other formats
@@ -106,9 +134,9 @@ int binToOcto (int number)
         decR = decR/8;
     }
 
-    for(i=i-1;i>=0;i--)
+    for(int j=i-1; j>=0; j--)
     {
-        printf("%d", resultTab[i]);
+        printf("%d", resultTab[j]);
     }
 }
 
@@ -327,7 +355,9 @@ int main()
             else if (outputMode == 16)
             {
                 printf("Enter number to convert: \n");
-                //ToBeDone
+                scanf(" %d", &number);
+                printf("Result: ");
+                decToHexa(number); // calc & display
 
                 //Asking to restart
                 char quitStr[4];
@@ -382,4 +412,5 @@ int main()
     }
     return 0; // return main() is possible if we add 'n' to quit like mentioned at line 162
 }
+
 //End
