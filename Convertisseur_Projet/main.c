@@ -1,3 +1,7 @@
+/*Bastien's Converter Project
+May 2021
+Sources/References: callac-soft-college.fr, openclassrooms.com, programiz.com, knowprogram.com, geeksforgeeks.org, sanfoundry.com, wikibooks.org */
+
 #include <stdio.h>
 #include <stdlib.h>
 //#include <string.h>
@@ -14,9 +18,11 @@ void restartMe()
 {
     char quitStr[] = "Hello\0"; // User answer
     printf("\n");
-    printf("\nType 'Yes' to start over, anything else to quit...\n");
+    printf("\nType YES to start over (lowercase allowed).\n");
+    printf("Type anything else to quit...\n");
     scanf(" %[^\n]", &quitStr); // important space in scanf() here
 
+    //Allowing lower or upper case
     if ((quitStr[0] == 'Y' || quitStr[0] == 'y') && (quitStr[1] == 'E' || quitStr[1] == 'e') && (quitStr[2] == 'S' || quitStr[2] == 's') && quitStr[3] == '\0')
     {
         printf("\n");
@@ -30,8 +36,9 @@ void restartMe()
 }
 
 //Decimal to binary calc
-void decToBin (int number, int resultTab [])
+void decToBin (int number)
 {
+    int resultTab [100];
     //loop
     int i = 0;
     //int N = (number/2);
@@ -46,6 +53,67 @@ void decToBin (int number, int resultTab [])
         printf("%d", resultTab[i]);
     }
 }
+
+//Decimal to octal calc
+void decToOcto (int number)
+{
+    int resultTab [100];
+    //loop
+    int i = 0;
+    for (i = 0; number > 0; i++)
+    {
+        resultTab[i] = number%8;
+        number = number/8;
+    }
+
+    for(i=i-1;i>=0;i--)
+    {
+        printf("%d", resultTab[i]);
+    }
+}
+
+//Other formats
+//Binary to decimal - Not using a tab this time
+int binToDec (int number)
+{
+    //Setting base and other vars
+    int dec = 0;
+    int i = 0; // i will be powered with 2
+    int rest = 0;
+    int puiss = 1;
+    //loop
+    for (i = 0; number > 0; i++)
+    {
+        rest = number % 10;
+        number = number/10;
+        dec = dec + rest*puiss;
+        puiss = puiss*2;
+    }
+    return dec;
+}
+
+//Binary to Octal
+int binToOcto (int number)
+{
+    int resultTab [100];
+    //Converting to decimal first
+    int decR = binToDec(number);
+    //From dec to octal
+    int i = 0;
+    for (i = 0; decR > 0; i++)
+    {
+        resultTab[i] = decR%8;
+        decR = decR/8;
+    }
+
+    for(i=i-1;i>=0;i--)
+    {
+        printf("%d", resultTab[i]);
+    }
+}
+
+//Adding two binary numbers
+
 
 ////String length
 //int strLength (char str [])
@@ -91,10 +159,10 @@ int main()
     printf("-=Starting Converter project=-\n");
 
     //User inputs
-    printf("\nPlease choose initial format to convert (2, 8, 10, or 16): \n");
+    printf("\nPlease choose initial format to convert (2, 8, 10, or 16): \n"); //Could use chars (b,o,d,h and 'n' to quit)
     scanf(" %d", &inputMode);
 
-    printf("Now choose output format: \n");
+    printf("Choose output format: \n");
     scanf(" %d", &outputMode);
 
     //Returning to main() for easy testing purpose
@@ -110,44 +178,187 @@ int main()
 
     else
     {
-        //switching modes
-        switch (inputMode)
+        //switching modes - Planning to do a switch in a switch, was fuzzy because of breaks and indentation
+        if (inputMode == 2)
         {
-            case 2:
-                printf("Enter number to convert: \n");
-                //
-                //switching output mode for calc
-                break;
+            //switching output mode for calc
+            if (outputMode == 2)
+            {
+                printf("You entered twice the same format.");
 
-            case 8:
-                printf("Enter number to convert: \n");
-                //
-                //switching output mode for calc
-                break;
+                //Offer binary operations, like adding 2 binary numbers
+                //ToDo
 
-            case 10:
+                //Asking to restart
+                restartMe();
+            }
+            else if (outputMode == 8)
+            {
                 printf("Enter number to convert: \n");
                 scanf(" %d", &number);
-                //switching output mode for calc
-                int tabRes[100];
-                int tabInv[100];
-                //tabReverse(strRes, tabResInv); // reverse
                 printf("Result: ");
-                decToBin(number, tabRes); // calc
+                binToOcto(number); // calc & display
 
-                //Fixing incorrect input again, and asking to restart
+                //Asking to restart while fixing incorrect input again (user input number)
                 char quitStr[4];
                 scanf("%[^\n]", &quitStr);
                 restartMe();
-                break; // return in restartMe() function, but will trigger next printf() if there's no break
+            }
+            else if (outputMode == 10)
+            {
+                printf("Enter number to convert: \n");
+                scanf(" %d", &number);
+                printf("Result: %d", binToDec(number)); // display & calc
 
-            case 16:
+                //Asking to restart
+                char quitStr[4];
+                scanf("%[^\n]", &quitStr);
+                restartMe();
+            }
+            else if (outputMode == 16)
+            {
+                printf("Enter number to convert: \n");
+                //ToBeDone
+
+                //Asking to restart
+                char quitStr[4];
+                scanf("%[^\n]", &quitStr);
+                restartMe();
+            }
+        }
+        else if (inputMode == 8)
+        {
+            //switching output mode for calc
+            if (outputMode == 2)
+            {
+                printf("Enter number to convert: \n");
+                //ToBeDone
+
+                //Asking to restart
+                char quitStr[4];
+                scanf("%[^\n]", &quitStr);
+                restartMe();
+            }
+            else if (outputMode == 8)
+            {
+                printf("You entered twice the same format.");
+
+                //Asking to restart
+                restartMe();
+            }
+            else if (outputMode == 10)
+            {
+                printf("Enter number to convert: \n");
+                //ToBeDone
+
+                //Asking to restart
+                char quitStr[4];
+                scanf("%[^\n]", &quitStr);
+                restartMe();
+            }
+            else if (outputMode == 16)
+            {
+                printf("Enter number to convert: \n");
+                //ToBeDone
+
+                //Asking to restart
+                char quitStr[4];
+                scanf("%[^\n]", &quitStr);
+                restartMe();
+            }
+        }
+        else if (inputMode == 10)
+        {
+            //switching output mode for calc
+            if (outputMode == 2)
+            {
+                printf("Enter number to convert: \n");
+                scanf(" %d", &number);
+                //int tabRes[100]; // Will be used in function
+                //int tabInv[100];
+                //tabReverse(strRes, tabResInv);
+                printf("Result: ");
+                decToBin(number); // calc & display
+
+                //Asking to restart
+                char quitStr[4];
+                scanf("%[^\n]", &quitStr);
+                restartMe();
+            }
+            else if (outputMode == 8)
+            {
+                printf("Enter number to convert: \n");
+                scanf(" %d", &number);
+                printf("Result: ");
+                decToOcto(number); // calc & display
+
+                //Asking to restart
+                char quitStr[4];
+                scanf("%[^\n]", &quitStr);
+                restartMe();
+            }
+            else if (outputMode == 10)
+            {
+                printf("You entered twice the same format.");
+                //Asking to restart
+                restartMe();
+            }
+            else if (outputMode == 16)
+            {
+                printf("Enter number to convert: \n");
+                //ToBeDone
+
+                //Asking to restart
+                char quitStr[4];
+                scanf("%[^\n]", &quitStr);
+                restartMe();
+            }
+        }
+        else if (inputMode == 16)
+        {
+            //switching output mode for calc with a string
+            if (outputMode == 2)
+            {
                 printf("Enter number to convert: \n");
                 //scanf(" %s", &hexaStr);
-                //switching output mode for calc with a string
-                break;
+
+                //Asking to restart
+                char quitStr[4];
+                scanf("%[^\n]", &quitStr);
+                restartMe();
+            }
+
+            else if(outputMode == 8)
+            {
+                printf("Enter number to convert: \n");
+                //scanf(" %s", &hexaStr);
+
+                //Asking to restart
+                char quitStr[4];
+                scanf("%[^\n]", &quitStr);
+                restartMe();
+            }
+
+            else if(outputMode == 10)
+            {
+                printf("Enter number to convert: \n");
+                //scanf(" %s", &hexaStr);
+
+                //Asking to restart
+                char quitStr[4];
+                scanf("%[^\n]", &quitStr);
+                restartMe();
+            }
+
+            else if(outputMode == 16)
+            {
+                printf("You entered twice the same format.");
+
+                //Asking to restart
+                restartMe();
+            }
         }
     }
-
-    return 0;
+    return 0; // return main() is possible if we add 'n' to quit like mentioned at line 94
 }
+//End
