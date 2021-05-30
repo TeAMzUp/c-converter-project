@@ -12,8 +12,7 @@ ToDo: Use long instead of int
 int inputMode = 0; // input format
 int outputMode = 0; // output format
 
-int number = 0; // To convert
-//char hexaStr[] = "ffffff\0"; // default hexa string
+//char hexaStr[] = "ffffff\0"; // Will be used at user input if input mode is hexadecimal
 
 //Restart loop function
 void restartMe()
@@ -186,7 +185,7 @@ int main()
 {
     inputMode = 0;
     outputMode = 0;
-    number = 0;
+    int number = 0;
 
     printf("-=Starting Converter project=-\n");
 
@@ -432,5 +431,4 @@ int main()
     }
     return 0; // return main() is possible if we add 'n' to quit like mentioned at line 179
 }
-
 //End
