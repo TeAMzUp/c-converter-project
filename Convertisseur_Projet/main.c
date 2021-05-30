@@ -38,7 +38,7 @@ void restartMe()
 //Decimal to binary calc
 void decToBin (int number)
 {
-    int resultTab [100];
+    int resultTab [100]; // Result, int by int. For an end user product, I should raise the size. We can also use chars
     //loop
     int i = 0;
     //int N = (number/2);
@@ -159,7 +159,7 @@ int main()
     printf("-=Starting Converter project=-\n");
 
     //User inputs
-    printf("\nPlease choose initial format to convert (2, 8, 10, or 16): \n"); //Could use chars (b,o,d,h and 'n' to quit)
+    printf("\nPlease choose initial format to convert (2, 8, 10, or 16): \n"); // Could use chars (b,o,d,h and 'n' to quit)
     scanf(" %d", &inputMode);
 
     printf("Choose output format: \n");
@@ -184,14 +184,27 @@ int main()
             //switching output mode for calc
             if (outputMode == 2)
             {
-                printf("You entered twice the same format.");
+                printf("You entered twice the same format.\n");
 
-                //Offer binary operations, like adding 2 binary numbers
-                //ToDo
+                //Offer binary operations, let' start with adding 2 binary numbers
+                int number1;
+                int number2;
+                printf("Enter first binary: \n");
+                scanf(" %d", &number1);
+                printf("Enter second binary number to add: \n");
+                scanf(" %d", &number2);
+                int x1 = binToDec(number1);
+                int x2 = binToDec(number2);
+                int x3 = x1+x2;
+                printf("Result: ");
+                decToBin(x3); // calc & display
 
-                //Asking to restart
+                //Asking to restart while fixing incorrect input again (user input number)
+                char quitStr[4];
+                scanf("%[^\n]", &quitStr);
                 restartMe();
             }
+
             else if (outputMode == 8)
             {
                 printf("Enter number to convert: \n");
@@ -199,7 +212,7 @@ int main()
                 printf("Result: ");
                 binToOcto(number); // calc & display
 
-                //Asking to restart while fixing incorrect input again (user input number)
+                //Asking to restart
                 char quitStr[4];
                 scanf("%[^\n]", &quitStr);
                 restartMe();
@@ -243,7 +256,7 @@ int main()
             {
                 printf("You entered twice the same format.");
 
-                //Asking to restart
+                //Asking to restart, nothing to fix here
                 restartMe();
             }
             else if (outputMode == 10)
