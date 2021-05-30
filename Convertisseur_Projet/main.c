@@ -365,6 +365,7 @@ int main()
             else if (outputMode == 10)
             {
                 printf("You entered twice the same format.");
+
                 //Asking to restart
                 restartMe();
             }
@@ -423,7 +424,6 @@ int main()
             else if(outputMode == 16)
             {
                 printf("You entered twice the same format.");
-                //ToBeDone
 
                 //Asking to restart
                 restartMe();
