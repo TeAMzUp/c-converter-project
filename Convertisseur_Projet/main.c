@@ -120,28 +120,17 @@ int binToDec (int number)
     return dec;
 }
 
-//Binary to Octal
-int binToOcto (int number)
+//From octal to decimal
+void octoToDec(int number)
 {
-    int resultTab [100];
-    //Converting to decimal first
-    int decR = binToDec(number);
-    //From dec to octal
-    int i = 0;
-    for (i = 0; decR > 0; i++)
-    {
-        resultTab[i] = decR%8;
-        decR = decR/8;
-    }
 
-    for(int j=i-1; j>=0; j--)
-    {
-        printf("%d", resultTab[j]);
-    }
 }
 
-//Adding two binary numbers
+//From hexadecimal to decimal
+void hexaToDec(int number)
+{
 
+}
 
 ////String length
 //int strLength (char str [])
@@ -246,7 +235,8 @@ int main()
                 printf("Enter number to convert: \n");
                 scanf(" %d", &number);
                 printf("Result: ");
-                binToOcto(number); // calc & display
+                int decR3 = binToDec(number);
+                decToOcto(decR3); // calc & display
 
                 //Asking to restart
                 char quitStr[4];
@@ -267,7 +257,10 @@ int main()
             else if (outputMode == 16)
             {
                 printf("Enter number to convert: \n");
-                //ToBeDone
+                scanf(" %d", &number);
+                int decR2 = binToDec(number);
+                printf("Result: ");
+                decToHexa(decR2); // calc & display
 
                 //Asking to restart
                 char quitStr[4];
@@ -372,6 +365,7 @@ int main()
             {
                 printf("Enter number to convert: \n");
                 //scanf(" %s", &hexaStr);
+                //ToBeDone
 
                 //Asking to restart
                 char quitStr[4];
@@ -383,6 +377,7 @@ int main()
             {
                 printf("Enter number to convert: \n");
                 //scanf(" %s", &hexaStr);
+                //ToBeDone
 
                 //Asking to restart
                 char quitStr[4];
@@ -394,6 +389,7 @@ int main()
             {
                 printf("Enter number to convert: \n");
                 //scanf(" %s", &hexaStr);
+                //ToBeDone
 
                 //Asking to restart
                 char quitStr[4];
@@ -404,13 +400,14 @@ int main()
             else if(outputMode == 16)
             {
                 printf("You entered twice the same format.");
+                //ToBeDone
 
                 //Asking to restart
                 restartMe();
             }
         }
     }
-    return 0; // return main() is possible if we add 'n' to quit like mentioned at line 162
+    return 0; // return main() is possible if we add 'n' to quit like mentioned at line 179
 }
 
 //End
