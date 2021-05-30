@@ -1,6 +1,8 @@
 /*Bastien's Converter Project
 May 2021
-Sources/References: callac-soft-college.fr, openclassrooms.com, programiz.com, knowprogram.com, geeksforgeeks.org, sanfoundry.com, wikibooks.org */
+Sources/References: callac-soft-college.fr, openclassrooms.com, programiz.com, knowprogram.com, geeksforgeeks.org, sanfoundry.com, wikibooks.org
+ToDo: Use long instead of int
+      More Binary operations */
 
 #include <stdio.h>
 #include <stdlib.h>
