@@ -1,6 +1,6 @@
 /*Bastien's Converter Project
 May 2021
-Sources/References: callac-soft-college.fr, openclassrooms.com, programiz.com, knowprogram.com, geeksforgeeks.org, sanfoundry.com, wikibooks.org
+Sources/References: callac-soft-college.fr, openclassrooms.com, programiz.com, knowprogram.com, geeksforgeeks.org, sanfoundry.com, wikibooks.org, codescracker.com
 ToDo: Use long instead of int
       More Binary operations */
 
@@ -12,15 +12,14 @@ ToDo: Use long instead of int
 int inputMode = 0; // input format
 int outputMode = 0; // output format
 
-//char hexaStr[] = "ffffff\0"; // Will be used at user input if input mode is hexadecimal
+char hexaStr[100]; // = "ffffff\0"; // Will be used at user input if input mode is hexadecimal
 
 //Restart loop function
 void restartMe()
 {
     char quitStr[] = "Hello\0"; // User answer
     printf("\n");
-    printf("\nType YES to start over (lowercase allowed).\n");
-    printf("Type anything else to quit...\n");
+    printf("\nType YES to start over (lowercase allowed), or anything else to quit...\n");
     scanf(" %[^\n]", &quitStr); // important space in scanf() here
 
     //Allowing lower or upper case
@@ -141,9 +140,37 @@ int octoToDec(int number)
 }
 
 //From hexadecimal to decimal
-int hexaToDec(int number)
+int hexaToDec(char hexaStr[])
 {
+    int dec = 0;
+    int rest = 0;
+    int len=0; // char[] length
+    int i = 0; // i will be powered with 16
 
+    for (int j = 0; hexaStr[j] != '\0'; j++)
+    {
+        len++;
+    }
+    len = len -1; // we now have string length
+
+    for (i = 0; len>=0; i++)
+    {
+        rest = hexaStr[len];
+        if(rest>=48 && rest<=57)
+            rest = rest-48;
+        else if(rest>=65 && rest<=70)
+            rest = rest-55;
+        else if(rest>=97 && rest<=102)
+            rest = rest-87;
+        else
+        {
+            printf("You've entered an invalid Hexadecimal digit\n");
+            return 0; // going back to main program
+        }
+        dec = dec + (rest*pow(16, i));
+        len--; // go to next char from right to left
+    }
+    return dec;
 }
 
 ////String length
@@ -387,8 +414,9 @@ int main()
             if (outputMode == 2)
             {
                 printf("Enter number to convert: \n");
-                //scanf(" %s", &hexaStr);
-                //ToBeDone
+                scanf(" %s", &hexaStr);
+                int decR6 = hexaToDec(hexaStr);
+                decToBin(decR6); // calc & display
 
                 //Asking to restart
                 char quitStr[4];
@@ -399,8 +427,9 @@ int main()
             else if(outputMode == 8)
             {
                 printf("Enter number to convert: \n");
-                //scanf(" %s", &hexaStr);
-                //ToBeDone
+                scanf(" %s", &hexaStr);
+                int decR7 = hexaToDec(hexaStr);
+                decToOcto(decR7); // calc & display
 
                 //Asking to restart
                 char quitStr[4];
@@ -411,8 +440,8 @@ int main()
             else if(outputMode == 10)
             {
                 printf("Enter number to convert: \n");
-                //scanf(" %s", &hexaStr);
-                //ToBeDone
+                scanf(" %s", &hexaStr);
+                printf("Result: %d", hexaToDec(hexaStr)); // display & calc
 
                 //Asking to restart
                 char quitStr[4];
@@ -429,7 +458,7 @@ int main()
             }
         }
     }
-    return 0; // return main() is possible if we add 'n' to quit like mentioned at line 193 #mustUpdate
+    return 0; // return main() is possible if we add 'n' to quit like mentioned at line 220
 }
 
 //End
