@@ -1,7 +1,7 @@
 /*Bastien's Converter Project
 May 2021
 Sources/References: callac-soft-college.fr, openclassrooms.com, programiz.com, knowprogram.com, geeksforgeeks.org, sanfoundry.com, wikibooks.org, codescracker.com
-ToDo: Use long instead of int
+ToDo: Use long instead of int, check number & string maximum sizes
       More Binary operations */
 
 #include <stdio.h>
