@@ -1,7 +1,7 @@
 /*Bastien's Converter Project
 May 2021
 Sources/References: callac-soft-college.fr, openclassrooms.com, programiz.com, knowprogram.com, geeksforgeeks.org, sanfoundry.com, wikibooks.org, codescracker.com
-ToDo: Use unsigned long int
+ToDo: Use double instead of int, or long, and deal with negative numbers
       More Binary operations */
 
 #include <stdio.h>
@@ -38,7 +38,7 @@ void restartMe()
 //Decimal to binary calc
 void decToBin (int number)
 {
-    int resultTab [100]; // Result, int by int. For an end user product, I should raise the size. We can also use chars
+    int resultTab [100]; // Result
     //loop
     int i = 0;
     //int N = (number/2);
@@ -50,7 +50,7 @@ void decToBin (int number)
 
     for(int j=i-1; j>=0; j--)
     {
-        printf("%d", resultTab[j]);
+        printf("%d", resultTab[j]); // From right to left
     }
 }
 
@@ -244,7 +244,7 @@ int main()
             {
                 printf("You entered twice the same format.\n");
 
-                //Offer binary operations, let' start with adding 2 binary numbers
+                //Offer binary operations, let's start with adding 2 binary numbers
                 int number1 = 0;
                 int number2 = 0;
                 printf("Enter first binary: \n");
